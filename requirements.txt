@@ -1,0 +1,5 @@
+customtkinter==5.2.2
+Pillow==11.1.0
+plyer==2.1.0
+pygame==2.6.1
+pystray==0.19.5
