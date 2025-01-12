@@ -9,6 +9,7 @@ from PIL import Image, ImageTk
 import json
 import threading
 import sys
+import pystray
 
 delay = 30
 # default value of delay
@@ -23,28 +24,67 @@ fontSize = 15.8
 
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+#gonna redirect the compiler to main file's path to get resources from there
 
+
+def minimize():
+    global window_visible,minimizeCheck
+    if minimizeCheck==0:
+        notification.notify(
+        title = "EyeWell is minimized to system tray!",
+        message = "You can find it in the system tray",
+        timeout = 10)
+        minimizeCheck +=1 
+        #that's how it gonna perform this notification only 1 time
+    app.withdraw()
+    #gonna hide the window
+    window_visible = False
+def toggle_window(icon,item):
+    global window_visible
+    if window_visible:
+        app.withdraw()
+        window_visible = False
+        #gonna hide the window
+    else:
+        app.deiconify()
+        #gonna unhide the window
+        window_visible = True
+def quit(icon,item):
+    icon.stop()
+    os._exit(0)
+    #gonna stop the program completly
+minimizeCheck = 0
+#to give user only 1 time notification on minimization 
 
 app = CTk(fg_color="#0f0f0f")
 app.title("EyeWell")
 app.geometry("560x360")
+#resolution of app
 app.resizable(False, False)
-# app.after(201, lambda : app.iconbitmap(r"2330.ico"))
 icon_img = Image.open("Final.png")
 icon_tk = ImageTk.PhotoImage(icon_img)
 # setting icon of the app
-
+window_visible =  True
+main = pystray.Icon("EyeWell")
+#creating an var for system tray
+main.icon = Image.open("Final.png")
+#icon of system tray's app icon
+main.menu = pystray.Menu(
+    pystray.MenuItem("EyeWell", toggle_window),
+    pystray.MenuItem("Quit",quit))
 app.tk.call("wm", "iconphoto", app._w, icon_tk)
 app.iconphoto(False, icon_tk)
 app.iconbitmap("Final.ico")
-# deactivate_automatic_dpi_awareness()
-app.protocol("WM_DELETE_WINDOW", sys.exit)
+app.protocol("WM_DELETE_WINDOW", minimize)
 # if Clicked on exit by main window then it gonna trigger sys.exit()
 
 app_data_dir = os.path.join(os.getenv("APPDATA"), "EyeWell")
-
-
 # creates/access a dir named 'EyeWell' in the AppData directory
+
+systemTrayThread =  threading.Thread(target=main.run, daemon=True)
+#staring thread for system tray icon
+systemTrayThread.start()
+
 def appDataCreation():
     global app_data_dir
     if not os.path.exists(app_data_dir):
@@ -1005,11 +1045,9 @@ if True:
         keepRun = KeepCallBack()
         if keepRun:
             while status:
-                while True:
                     MainLoop(CusMsg, CusTit, delay)
         elif keepRun == False and is_time_between() == True:
             while status:
-                while True:
                     MainLoop(CusMsg, CusTit, delay)
         else:
             pass
