@@ -24,8 +24,13 @@
 - Just Download and run the Executable file and you're done :)
 
 ### Steps to Install
-- **Download** the application from the [Releases](https://github.com/nothig007/EyeWell/releases/tag/v0.1.0-Main-Executable)
-- Run the Executable File and enjoy.
+#### Standard Installar  
+- **Download** the Installation File from [EyeWell v0.1.1 Quick Setup](https://github.com/nothig007/EyeWell/releases/tag/v0.1.1-main-Installer) (recommended)
+- Run the Installer and follow on screen instruction!
+- Launch the app
+#### Portable Installer
+ - **Download** the application from the [EyeWell v0.1.1 Portable Installer](https://github.com/nothig007/EyeWell/releases/tag/v0.1.1-main-Portable-Installer)
+ - Run the Executable File and enjoy.
 
 ---
 
