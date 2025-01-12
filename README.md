@@ -1,6 +1,6 @@
 # EyeWell
 
-**EyeWell** is an application which provides Custom Reminder Notification to help your eyes stay Nourish from screen!
+**EyeWell** is an Open-Source application which provides Custom Reminder Notification to help your eyes stay Nourish from screen!
 
 
 
