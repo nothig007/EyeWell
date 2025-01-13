@@ -29,7 +29,9 @@
 #### Portable Installer
  - **Download** the application from the [EyeWell v0.1.1 Portable Installer](https://github.com/nothig007/EyeWell/releases/tag/v0.1.1-main-Portable-Installer)
  - Run the Executable File and enjoy.
-
+#### From Source Code
+ - To download and run from direct `EyeWell.py`
+ - Checkout [Source Code](https://github.com/nothig007/EyeWell/releases/tag/v0.1.1-SourceCode)
 ---
 
 
